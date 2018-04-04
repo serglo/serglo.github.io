@@ -2,12 +2,32 @@
 <html>
 <head>
     <title>until</title>
+    <style type="text/css">
+        body {
+          font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+          max-width: 600px;
+          margin-left: auto;
+          margin-right: auto;
+        }
+        h1, h2 { text-align: center; }
+    </style>
 </head>
 <body>
-<h1>untilly</h1>
+<h1 id="clock"></h1>
+<h2 id="until">until</h2>
+<script
+  src="https://code.jquery.com/jquery-3.3.1.min.js"
+  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+  crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.countdown/2.2.0/jquery.countdown.min.js"></script>
 <script type="text/javascript">
-    var currentLocation = window.location.hash;
+    var currentLocation = window.location.hash.substr(1);
     console.log(currentLocation);
+
+    $('#clock').countdown(currentLocation, function(event) {
+      $(this).html(event.strftime('%-m months %-n days'));
+    });
+    $('#until').html('until ' + currentLocation);
 </script>
 </body>
 </html>
