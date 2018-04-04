@@ -25,18 +25,16 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.countdown/2.2.0/jquery.countdown.min.js"></script>
 <script type="text/javascript">
     var currentLocation = window.location.hash.substr(1);
-    console.log(currentLocation);
+    //console.log(currentLocation);
     //var stamp = Date.parse(currentLocation);
     var d = new Date(currentLocation);
-    const monthNames = ["January", "February", "March", "April", "May", "June",
-      "July", "August", "September", "October", "November", "December"
-        ];
+    var locale = "en-us"
 
     $('#clock').countdown(currentLocation, function(event) {
       $(this).html(event.strftime('%-m months %-n days'));
     });
 
-    $('#until').html('until ' + d.getDate()+ ' ' + monthNames[d.getMonth()]+ ' ' + d.getFullYear());
+    $('#until').html('until ' + d.getDate()+ ' ' + d.toLocaleString(locale, { month: "long" }) + ' ' + d.getFullYear());
 </script>
 </body>
 </html>
