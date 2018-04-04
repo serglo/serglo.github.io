@@ -14,7 +14,7 @@
 </head>
 <body>
 <h1 id="clock"></h1>
-<h2 id="until">until</h2>
+<h2 id="until"></h2>
 <script
   src="https://code.jquery.com/jquery-3.3.1.min.js"
   integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -23,11 +23,17 @@
 <script type="text/javascript">
     var currentLocation = window.location.hash.substr(1);
     console.log(currentLocation);
+    //var stamp = Date.parse(currentLocation);
+    var d = new Date(currentLocation);
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+      "July", "August", "September", "October", "November", "December"
+        ];
 
     $('#clock').countdown(currentLocation, function(event) {
       $(this).html(event.strftime('%-m months %-n days'));
     });
-    $('#until').html('until ' + currentLocation);
+
+    $('#until').html('until ' + d.getDate()+ ' ' + monthNames[d.getMonth()]+ ' ' + d.getFullYear());
 </script>
 </body>
 </html>
