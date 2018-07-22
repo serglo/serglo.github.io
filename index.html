@@ -30,11 +30,11 @@
     var d = new Date(currentLocation);
     var locale = "en-us"
 
-    $('#clock').countdown(currentLocation).toString();
+    console.log(countdown(currentLocation).toString());
 
-    //$('#clock').countdown(currentLocation, function(event) {
-    //  $(this).html(event.strftime('%-m months %-n days'));
-    //});
+    $('#clock').countdown(currentLocation, function(event) {
+      $(this).html(event.strftime('%-m months %-n days'));
+    });
 
     $('#until').html('until ' + d.getDate()+ ' ' + d.toLocaleString(locale, { month: "long" }) + ' ' + d.getFullYear());
 </script>
